@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <img width="auto" src="./assets/Vue-logo.png" /> <GDriveSelector />
+    <img width="auto" src="./assets/Vue-logo.png">
+    <DropboxSelector/>
   </div>
 </template>
 
 <script>
-import GDriveSelector from "./components/GDriveSelector";
+import DropboxSelector from "./components/DropboxSelector";
 
 export default {
   name: "App",
   components: {
-    GDriveSelector
+    DropboxSelector
   }
 };
 </script>

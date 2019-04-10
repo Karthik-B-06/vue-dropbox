@@ -4,12 +4,11 @@
       <li v-for="tempAttachment in tempAttachments" :key="tempAttachment._id">
         <img class="icon" :src="tempAttachment.iconURL">
         <div class="file-details">
-          <div class="file-name display-flex align-center">
+          <div @click="openLink(tempAttachment.link)" class="file-name display-flex align-center">
             <p class ref="attachmentTitle">{{ tempAttachment.title }}</p>
           </div>
           <div class="file-info">
             <span class="uploaded-date">File Size : {{ tempAttachment.size }} bytes</span>
-            <span v-if="checkProgress(tempAttachment)" class="upload-prgress"></span>
           </div>
         </div>
         <figure class="close">
@@ -51,8 +50,10 @@
 export default {
   name: "AttachmentList",
   methods: {
-    checkProgress(attachment) {
-      return attachment.progress === null ? false : true;
+    openLink(attachmentLink) {
+      let link = document.createElement("a");
+      link.href = attachmentLink;
+      link.click();
     }
   },
   props: {
@@ -85,6 +86,7 @@ li {
 .file-name {
   min-width: 150px;
   font-size: 16px;
+  cursor: pointer;
 }
 .file-name p {
   margin: 0;
